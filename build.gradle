@@ -15,9 +15,9 @@ java {
 }
 sonar {
 	properties {
-		property "sonar.projectKey", "fiap-four-lanches_fourlanches.order.app"
-		property "sonar.organization", "fiap-four-lanches"
-		property "sonar.host.url", "https://sonarcloud.io"
+    	property "sonar.projectKey", "fiap-four-lanches_fourlanches.customer.app"
+    	property "sonar.organization", "fiap-four-lanches"
+    	property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/*.xml"
 		property "sonar.java.coveragePlugin", "jacoco"
 	}
