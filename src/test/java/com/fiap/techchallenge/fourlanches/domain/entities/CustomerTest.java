@@ -1,11 +1,11 @@
-package com.fiap.techchallenge.fourlanches.customer.domain.entities;
+package com.fiap.techchallenge.fourlanches.domain.entities;
 
-import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CustomerTest {
+class CustomerTest {
+
     @Test
     public void shouldReturnCustomerWhenCustomerIsFilled() {
         Customer customer = Customer.builder()

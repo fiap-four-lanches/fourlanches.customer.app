@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.customer.adapter.driven.data.repositories;
+package com.fiap.techchallenge.fourlanches.adapter.driven.data.repositories;
 
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerJpaRepository;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.CustomerJpaEntity;
@@ -22,21 +22,21 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CustomerRepositoryImplTest {
+class CustomerRepositoryImplTest {
 
-    public static final String CUSTOMER_DOC = "1234567890";
+    private static final String CUSTOMER_DOC = "1234567890";
     @Mock
     private CustomerJpaRepository jpaRepository;
 
     private CustomerRepository customerRepository;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         this.customerRepository = new CustomerRepositoryImpl(jpaRepository);
     }
 
     @Test
-    public void shouldCreateCustomer() {
+    void shouldCreateCustomer() {
         when(jpaRepository.save(any(CustomerJpaEntity.class))).thenReturn(getDefaultCustomerEntity());
 
         Customer expectedCustomer = customerRepository.saveCustomer(getDefaultCustomerEntity());
@@ -45,7 +45,7 @@ public class CustomerRepositoryImplTest {
         assertThat(expectedCustomer).isNotNull();
     }
     @Test
-    public void shouldGetCustomerByDocument() {
+    void shouldGetCustomerByDocument() {
         when(jpaRepository.findByDocument(eq(CUSTOMER_DOC)))
                 .thenReturn(Optional.of(getDefaultCustomerEntity()));
 
@@ -54,7 +54,7 @@ public class CustomerRepositoryImplTest {
         assertThat(expectedCustomer.getDocument()).isEqualTo(getDefaultCustomerEntity().getDocument());
     }
     @Test
-    public void shouldThrowProductNotFoundWhenGetProductByIdDoesNotExist() {
+    void shouldThrowProductNotFoundWhenGetProductByIdDoesNotExist() {
         assertThrows(CustomerNotFoundException.class, () -> customerRepository.getCustomerByDocument(CUSTOMER_DOC));
     }
 

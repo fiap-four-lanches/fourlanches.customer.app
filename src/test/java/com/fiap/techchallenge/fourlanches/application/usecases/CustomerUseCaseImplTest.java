@@ -1,8 +1,7 @@
-package com.fiap.techchallenge.fourlanches.customer.application.usecases;
+package com.fiap.techchallenge.fourlanches.application.usecases;
 
 import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerSaveException;
-import com.fiap.techchallenge.fourlanches.application.usecases.CustomerUseCaseImpl;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import com.fiap.techchallenge.fourlanches.domain.repositories.CustomerRepository;
 import com.fiap.techchallenge.fourlanches.domain.usecases.CustomerUseCase;
@@ -11,14 +10,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CustomerUseCaseImplTest {
+class CustomerUseCaseImplTest {
+
     private static final String CUSTOMER_DOC = "1234567890";
     @Mock
     private CustomerRepository customerRepository;
