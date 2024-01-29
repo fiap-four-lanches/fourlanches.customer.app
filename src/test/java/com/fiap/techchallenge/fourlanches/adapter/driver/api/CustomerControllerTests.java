@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-public class CustomerControllerTests {
+class CustomerControllerTests {
 
     @Autowired
     private MockMvc mvc;
@@ -53,7 +53,7 @@ public class CustomerControllerTests {
     private JacksonTester<ApiErrorMessage> jsonApiErrorMessage;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         this.mvc = MockMvcBuilders
                 .standaloneSetup(customerController)
                 .setControllerAdvice(new CustomerControllerAdvisor())

@@ -1,6 +1,7 @@
 package com.fiap.techchallenge.fourlanches.application.dto;
 
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.CustomerJpaEntity;
+import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -29,6 +30,14 @@ public class CustomerDTO {
 
     public CustomerJpaEntity toEntity() {
         return CustomerJpaEntity.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .document(document)
+                .build();
+    }
+    public Customer toCustomer() {
+        return Customer.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)

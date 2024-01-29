@@ -50,7 +50,7 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          felipemag/order-app
+          felipemag/customer-app
         tags: |
           type=sha
     -
