@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.adapter.driver.api;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-class CustomerControllerTests {
+class CustomerControllerTest {
 
     @Autowired
     private MockMvc mvc;
