@@ -3,6 +3,7 @@
 
 # Environment variables
 .env
+.DS_Store
 
 #Gradle
 .gradle
