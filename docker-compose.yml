@@ -1,6 +1,8 @@
 version: '3'
 services:
   db:
+    env_file:
+      - .env
     container_name: db
     image: postgres
     environment:
@@ -11,7 +13,8 @@ services:
     ports:
       - "5432:5432"
   app:
-    image: fourlanches
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
@@ -26,7 +29,8 @@ services:
     ports:
       - "8080:8080"
   migration:
-    container_name: migration
+    env_file:
+      - .env
     image: flyway/flyway
     environment:
       - FLYWAY_USER=${DATABASE_USERNAME}
@@ -34,10 +38,8 @@ services:
       - FLYWAY_URL=jdbc:postgresql://db:5432/fourlanches
       - FLYWAY_SCHEMAS=public
       - FLYWAY_GROUP=true
-#    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     command: -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
       - ./src/main/resources/db/migration:/flyway/sql
-      # - ./src/main/resources/flyway.config:/flyway/conf/flyway.config
     depends_on:
       - db
