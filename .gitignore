@@ -1,8 +1,6 @@
 # Compiled class file
 *.class
 
-# Environment variables
-.env
 .DS_Store
 
 #Gradle
