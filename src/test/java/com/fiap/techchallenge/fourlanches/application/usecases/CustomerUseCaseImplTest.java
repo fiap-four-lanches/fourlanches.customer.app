@@ -31,7 +31,7 @@ class CustomerUseCaseImplTest {
     }
 
     @Test
-    void givenDoc_whenGetCustomerByDoc_thenReturnProduct() {
+    void givenDoc_whenGetCustomerByDoc_thenReturnCustomer() {
         Customer customer = getCustomerDTO().toCustomer();
         when(customerRepository.getCustomerByDocument(CUSTOMER_DOC)).thenReturn(customer);
 
@@ -40,7 +40,7 @@ class CustomerUseCaseImplTest {
         assertThat(actualCustomer).isEqualTo(customer);
     }
     @Test
-    void givenProductToBeCreated_whenCreateIsSuccessful_ThenReturnId() {
+    void givenCustomerToBeCreated_whenCreateIsSuccessful_ThenReturnCustomer() {
         when(customerRepository.saveCustomer(getCustomerDTO().toEntity())).thenReturn(getCustomer());
 
         Customer expectedCustomer = customerUseCase.saveCustomer(getCustomerDTO());
@@ -52,6 +52,15 @@ class CustomerUseCaseImplTest {
         when(customerRepository.saveCustomer(any())).thenThrow(IllegalArgumentException.class);
         assertThrows(CustomerSaveException.class,
                 () -> customerUseCase.saveCustomer(getInvalidCustomerDTO()));
+    }
+    @Test
+    void givenCustomerToBeAnonymized_whenUpdateIsSucessful_ThenReturnCustomer() {
+        when(customerRepository.saveCustomer(any())).thenReturn(getCustomerAnonymized());
+        when(customerRepository.getCustomerByDocument(CUSTOMER_DOC)).thenReturn(getCustomer());
+
+        Long expectedCustomerId = customerUseCase.anonymizeCustomerByDocument(CUSTOMER_DOC);
+
+        assertThat(expectedCustomerId).isEqualTo(getCustomerAnonymized().getId());
     }
     private CustomerDTO getCustomerDTO() {
         return CustomerDTO.builder()
@@ -74,6 +83,15 @@ class CustomerUseCaseImplTest {
     private CustomerDTO getInvalidCustomerDTO() {
         return CustomerDTO.builder()
                 .firstName(null)
+                .build();
+    }
+
+    private Customer getCustomerAnonymized() {
+        return Customer.builder()
+                .firstName("Ada")
+                .lastName("qwertyuiop")
+                .document("1234567890")
+                .email("qwertyuiop")
                 .build();
     }
 

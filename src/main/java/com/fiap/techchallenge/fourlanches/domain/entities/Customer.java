@@ -13,4 +13,9 @@ public class Customer {
     private String lastName;
     private String email;
     private String document;
+    private String address;
+    private String phoneNumber;
+
 }
+
+

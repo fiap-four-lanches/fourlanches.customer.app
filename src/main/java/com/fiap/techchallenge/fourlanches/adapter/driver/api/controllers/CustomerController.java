@@ -26,7 +26,11 @@ public class CustomerController {
 
     @PostMapping(value = "", consumes = "application/json", produces = "application/json")
     public Customer saveCustomer(@RequestBody @Valid CustomerDTO customer) {
-
         return customerUseCase.saveCustomer(customer);
+    }
+
+    @PutMapping(value = "/anonymized/{document}")
+    public Long anonymizeCustomerByDocument(@PathVariable String document) {
+        return customerUseCase.anonymizeCustomerByDocument(document);
     }
 }

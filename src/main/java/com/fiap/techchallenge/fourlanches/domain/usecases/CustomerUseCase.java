@@ -6,4 +6,5 @@ import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 public interface CustomerUseCase {
     Customer getCustomerByDocument(String document);
     Customer saveCustomer(CustomerDTO customerDTO);
+    Long anonymizeCustomerByDocument(String document);
 }
