@@ -1,5 +1,6 @@
 package com.fiap.techchallenge.fourlanches.application.usecases;
 
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.CustomerJpaEntity;
 import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerNotFoundException;
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerSaveException;
@@ -31,5 +32,19 @@ public class CustomerUseCaseImpl implements CustomerUseCase {
             log.error(COULD_NOT_SAVE_MSG, e);
             throw new CustomerSaveException(COULD_NOT_SAVE_MSG, e);
         }
+    }
+
+    public Long anonymizeCustomerByDocument(String document){
+        String anonymizedString = "qwertyuiop";
+
+        Customer customer = getCustomerByDocument(document);
+        customer.setFirstName(anonymizedString);
+        customer.setLastName(anonymizedString);
+        customer.setDocument(anonymizedString);
+        customer.setEmail(anonymizedString);
+        customer.setAddress(anonymizedString);
+        customer.setPhoneNumber(anonymizedString);
+
+        return repository.saveCustomer(CustomerJpaEntity.toEntity(customer)).getId();
     }
 }

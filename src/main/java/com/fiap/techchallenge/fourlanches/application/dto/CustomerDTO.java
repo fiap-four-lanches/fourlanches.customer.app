@@ -28,12 +28,20 @@ public class CustomerDTO {
     @Size(min = 11, max = 11, message = "invalid document size, it should have 11 characters")
     private String document;
 
+    @NotEmpty
+    private String address;
+
+    @NotEmpty
+    private String phoneNumber;
+
     public CustomerJpaEntity toEntity() {
         return CustomerJpaEntity.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)
                 .document(document)
+                .address(address)
+                .phoneNumber(phoneNumber)
                 .build();
     }
     public Customer toCustomer() {
@@ -42,6 +50,8 @@ public class CustomerDTO {
                 .lastName(lastName)
                 .email(email)
                 .document(document)
+                .address(address)
+                .phoneNumber(phoneNumber)
                 .build();
     }
 }

@@ -25,15 +25,30 @@ public class CustomerJpaEntity {
     private String lastName;
     private String email;
     private String document;
+    private String address;
+    private String phoneNumber;
 
     public Customer getCustomerEntity() {
-
         return Customer.builder()
                 .id(id)
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)
                 .document(document)
+                .address(address)
+                .phoneNumber(phoneNumber)
+                .build();
+    }
+
+    public static CustomerJpaEntity toEntity(Customer customer) {
+        return CustomerJpaEntity.builder()
+                .id(customer.getId())
+                .firstName(customer.getFirstName())
+                .lastName(customer.getLastName())
+                .email(customer.getEmail())
+                .document(customer.getDocument())
+                .address(customer.getAddress())
+                .phoneNumber(customer.getPhoneNumber())
                 .build();
     }
 }
