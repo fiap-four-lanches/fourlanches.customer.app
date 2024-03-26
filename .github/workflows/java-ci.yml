@@ -78,7 +78,7 @@ jobs:
     - name: Checkout k8s repo
       uses: actions/checkout@v4
       with:
-        repository: fourlanches.k8s
+        repository: fiap-four-lanches/fourlanches.k8s
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ./k8s-repo
 
